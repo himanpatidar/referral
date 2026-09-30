@@ -1,0 +1,27 @@
+{
+  "updated": "2026-09-30",
+  "links": [
+    {
+      "app": "Swiggy",
+      "category": "Food",
+      "tagline": "Food delivery",
+      "reward": "",
+      "url": "",
+      "code": "",
+      "note": "",
+      "logo": "",
+      "accent": "#fc8019"
+    },
+    {
+      "app": "Zomato",
+      "category": "Food",
+      "tagline": "Food delivery & dining out",
+      "reward": "",
+      "url": "",
+      "code": "",
+      "note": "",
+      "logo": "",
+      "accent": "#e23744"
+    }
+  ]
+}
