@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submit a Referral</title>
+<meta name="description" content="Share your own referral link or code to be listed in the directory.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="index.html">&larr; All referrals</a>
+    </nav>
+
+    <header>
+      <h1>Submit a referral</h1>
+      <p class="lede">
+        Got a referral link or code worth sharing? Add it here. Every submission is
+        reviewed by hand before it goes live.
+      </p>
+    </header>
+
+    <p class="form-note" id="status-note">
+      <strong>Not accepting submissions yet.</strong> The form works and validates, but
+      there's no backend wired up, so nothing is sent or stored. It's here so the flow
+      can be reviewed first.
+    </p>
+
+    <div class="form-layout">
+      <form id="submit-form" novalidate>
+        <div class="field" id="f-app">
+          <label for="app">App or service <span class="req">*</span>
+            <span class="help">The brand people would recognise, e.g. Swiggy.</span>
+          </label>
+          <input id="app" name="app" type="text" maxlength="40" autocomplete="off">
+          <span class="error-text"></span>
+        </div>
+
+        <div class="field" id="f-category">
+          <label for="category">Category <span class="req">*</span></label>
+          <select id="category" name="category">
+            <option value="">Choose one&hellip;</option>
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Finance</option>
+            <option>Entertainment</option>
+            <option>Shopping</option>
+            <option>Other</option>
+          </select>
+          <span class="error-text"></span>
+        </div>
+
+        <div class="field" id="f-url">
+          <label for="url">Referral link
+            <span class="help">Must start with https://</span>
+          </label>
+          <input id="url" name="url" type="url" maxlength="400" autocomplete="off"
+                 placeholder="https://&hellip;">
+          <span class="error-text"></span>
+        </div>
+
+        <div class="field" id="f-code">
+          <label for="code">Referral code
+            <span class="help">If the app gives a code instead of a link.</span>
+          </label>
+          <input id="code" name="code" type="text" maxlength="40" autocomplete="off">
+          <span class="error-text"></span>
+        </div>
+
+        <div class="field" id="f-reward">
+          <label for="reward">What does the other person get?
+            <span class="help">e.g. &ldquo;&#8377;150 off your first order&rdquo;</span>
+          </label>
+          <input id="reward" name="reward" type="text" maxlength="80" autocomplete="off">
+          <span class="error-text"></span>
+        </div>
+
+        <div class="field" id="f-submittedBy">
+          <label for="submittedBy">Your name or handle
+            <span class="help">Optional. Shown as credit on the card.</span>
+          </label>
+          <input id="submittedBy" name="submittedBy" type="text" maxlength="40"
+                 autocomplete="off" placeholder="@yourhandle">
+          <span class="error-text"></span>
+        </div>
+
+        <!-- Honeypot: hidden from people, irresistible to bots. -->
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="primary">Submit for review</button>
+          <span id="form-status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <aside class="preview">
+        <h2>Live preview</h2>
+        <div id="preview-mount"></div>
+        <p class="hint-text">
+          This is how your card would look in the directory. The copy button is
+          inactive here.
+        </p>
+      </aside>
+    </div>
+
+    <footer>
+      <span>Reviewed by hand &middot; nothing auto-publishes</span>
+      <a href="https://github.com/himanpatidar/referral">Source on GitHub</a>
+    </footer>
+  </div>
+
+  <script src="card.js"></script>
+  <script src="submit.js"></script>
+</body>
+</html>

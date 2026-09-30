@@ -80,6 +80,70 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
+## Files
+
+```
+index.html    directory page
+submit.html   submission form
+styles.css    shared styles for both pages
+card.js       shared card renderer (window.ReferralCard)
+app.js        directory: fetch, group, search
+submit.js     form: validation + live preview
+links.json    the data
+```
+
+`card.js` is shared deliberately — the submit page's live preview renders through the
+same `buildCard()` the directory uses, so a submitter sees exactly the card they'd get.
+Pass `{ inert: true }` to skip wiring the copy button.
+
+## Submissions
+
+**Status: form only.** `submit.html` validates and previews, but `sendSubmission()` in
+`submit.js` is stubbed and rejects with `NO_BACKEND` — nothing is sent or stored. The
+page says so plainly.
+
+Two rules the design holds to:
+
+1. **Nothing auto-publishes.** A user-submitted URL is an untrusted URL. Published
+   without review it becomes a phishing link sitting next to a real brand logo. Every
+   submission goes to a queue for manual approval.
+2. **Only https links.** `javascript:`, `data:`, `http:` and malformed URLs are
+   rejected client-side, and must be rejected server-side too when the backend lands
+   — client validation is a UX convenience, never a security boundary.
+
+### Placement model
+
+The owner's own code stays the primary card for each app. Community submissions render
+underneath as secondary entries, carrying a `submittedBy` credit line. Submissions don't
+displace the owner's placement.
+
+### Planned backend: Cloudflare Worker + D1
+
+Chosen for what breaks first at scale, which is not submission volume:
+
+- **`links.json` hand-editing.** At dozens of apps with several codes each, a single
+  JSON file is a bad fit — the whole dataset ships to every visitor and each approval is
+  a git commit. This wants a table.
+- **Moderation throughput.** Approval has to be one click against a database, not
+  read-email-then-edit-JSON-then-push.
+
+Sketch:
+
+```
+POST /api/submissions   → validate, Turnstile check, insert status='pending'
+GET  /api/links         → approved rows only, cached at the edge
+POST /api/admin/:id     → approve / reject (authenticated)
+```
+
+D1 free tier (5GB, 100k Worker requests/day) is far beyond what this needs, Turnstile
+handles spam at no cost, and reads stay CDN-cached so the public page is as fast as it
+is today. The form's field names already match the intended row shape, so wiring it up
+shouldn't need a rewrite.
+
+Rejected alternatives: prefilled **GitHub Issues** (walls out every non-developer
+submitter, and approval still means hand-editing JSON); **Formspree** (~50
+submissions/month free, and email-based moderation doesn't scale past dozens).
+
 ## Branches
 
 - `main` — what GitHub Pages serves. Treat it as production.
