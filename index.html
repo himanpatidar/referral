@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Referral</title>
-<meta name="description" content="Referral — coming soon.">
+<title>Referral Links</title>
+<meta name="description" content="Personal referral links and codes for apps I actually use.">
 <style>
   :root {
     --bg: #fbfbfa;
@@ -13,6 +13,8 @@
     --muted: #6b6b66;
     --border: #e6e5e1;
     --accent: #2f6f4f;
+    --chip: #f4f4f1;
+    --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 12px rgba(0,0,0,.04);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -22,6 +24,8 @@
       --muted: #9a9a93;
       --border: #2e2e2b;
       --accent: #7dc5a0;
+      --chip: #262624;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 12px rgba(0,0,0,.2);
     }
   }
   :root[data-theme="dark"] {
@@ -31,112 +35,289 @@
     --muted: #9a9a93;
     --border: #2e2e2b;
     --accent: #7dc5a0;
+    --chip: #262624;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 12px rgba(0,0,0,.2);
   }
 
   * { box-sizing: border-box; }
-
-  html, body { height: 100%; }
 
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: ui-sans-serif, -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px 16px;
   }
 
-  main {
-    width: 100%;
-    max-width: 30rem;
+  .wrap {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 56px 16px 80px;
   }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: 999px;
-    padding: 0.3rem 0.7rem;
-  }
+  /* ---------- header ---------- */
 
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
+  header { margin-bottom: 2rem; }
 
   h1 {
-    font-size: clamp(2.25rem, 9vw, 3.25rem);
+    font-size: clamp(2rem, 7vw, 2.75rem);
     line-height: 1.1;
     letter-spacing: -0.03em;
     font-weight: 600;
-    margin: 1.25rem 0 0;
+    margin: 0;
   }
 
-  p.lede {
+  .lede {
     color: var(--muted);
-    font-size: 1.0625rem;
-    margin: 0.875rem 0 0;
-    max-width: 26rem;
+    margin: 0.625rem 0 0;
+    max-width: 34rem;
   }
 
-  hr {
-    border: 0;
-    border-top: 1px solid var(--border);
-    margin: 2rem 0 1.25rem;
+  .search-row {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
   }
+
+  #search {
+    flex: 1 1 16rem;
+    min-width: 0;
+    font: inherit;
+    font-size: 0.9375rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.625rem 0.875rem;
+    box-shadow: var(--shadow);
+  }
+
+  #search::placeholder { color: var(--muted); }
+
+  #search:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+
+  #count {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- categories ---------- */
+
+  .category { margin-top: 2.5rem; }
+
+  .category h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.875rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: 0.875rem;
+  }
+
+  /* ---------- card ---------- */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.125rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card-head {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #fff;
+    background: var(--accent);
+    overflow: hidden;
+  }
+
+  .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-title { min-width: 0; }
+
+  .card-title .app {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .card-title .tagline {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .reward {
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  .note {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.25rem;
+  }
+
+  .btn, .code-chip {
+    font: inherit;
+    font-size: 0.875rem;
+    border-radius: 9px;
+    padding: 0.5rem 0.875rem;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+
+  .btn {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn:hover { filter: brightness(1.08); }
+
+  .code-chip {
+    background: var(--chip);
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .code-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+  .code-chip .hint {
+    font-family: inherit;
+    font-size: 0.6875rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .code-chip.copied { border-color: var(--accent); color: var(--accent); }
+
+  .btn:focus-visible, .code-chip:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .pending {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ---------- states ---------- */
+
+  .state {
+    text-align: center;
+    color: var(--muted);
+    padding: 3rem 1rem;
+  }
+
+  .state.error { color: #c0392b; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .state.error { color: #f08a7a; }
+  }
+
+  [hidden] { display: none !important; }
+
+  /* ---------- footer ---------- */
 
   footer {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.875rem;
+    color: var(--muted);
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem 1.25rem;
-    align-items: baseline;
-    font-size: 0.875rem;
-    color: var(--muted);
   }
 
-  a {
+  footer a {
     color: var(--text);
     text-decoration: none;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 1px;
-    transition: border-color 0.15s ease, color 0.15s ease;
   }
 
-  a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
+  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 </style>
 </head>
 <body>
-  <main>
-    <span class="badge"><span class="dot"></span>In development</span>
+  <div class="wrap">
+    <header>
+      <h1>Referral Links</h1>
+      <p class="lede">
+        My personal referral links and codes for apps I actually use. Sign up through one
+        and we both get something out of it.
+      </p>
 
-    <h1>Referral</h1>
+      <div class="search-row">
+        <input id="search" type="search" placeholder="Search apps, categories&hellip;"
+               aria-label="Search referrals" autocomplete="off" spellcheck="false">
+        <span id="count" aria-live="polite"></span>
+      </div>
+    </header>
 
-    <p class="lede">
-      Something new is being built here. Check back soon.
-    </p>
-
-    <hr>
+    <main id="results" aria-live="polite">
+      <p class="state" id="loading">Loading referrals&hellip;</p>
+    </main>
 
     <footer>
-      <span>&copy; 2026</span>
+      <span id="updated"></span>
       <a href="https://github.com/himanpatidar/referral">Source on GitHub</a>
     </footer>
-  </main>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
