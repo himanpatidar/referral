@@ -194,9 +194,13 @@
     margin: 0;
   }
 
+  /* Fixed two-row stack: row 1 is the link, row 2 is the code.
+     Stretching both to full width means the copy feedback can never
+     resize a button or reflow the rows. */
   .actions {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
     gap: 0.5rem;
     margin-top: auto;
     padding-top: 0.25rem;
@@ -218,7 +222,9 @@
     color: var(--bg);
     font-weight: 500;
     text-decoration: none;
-    display: inline-block;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 
   .btn:hover { filter: brightness(1.08); }
@@ -228,22 +234,40 @@
     color: var(--text);
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     letter-spacing: 0.02em;
-    display: inline-flex;
+    display: flex;
+    width: 100%;
     align-items: center;
+    justify-content: space-between;
     gap: 0.5rem;
+    text-align: left;
+  }
+
+  /* Long codes ellipsize instead of widening the chip. */
+  .code-chip .code {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .code-chip:hover { border-color: var(--accent); color: var(--accent); }
 
+  /* min-width reserves room for the longest state ("Copied"), so the
+     label swap never nudges the code beside it. */
   .code-chip .hint {
+    flex: 0 0 auto;
+    min-width: 3.25rem;
     font-family: inherit;
     font-size: 0.6875rem;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    text-align: right;
   }
 
-  .code-chip.copied { border-color: var(--accent); color: var(--accent); }
+  .code-chip.copied { border-color: var(--accent); }
+  .code-chip.copied .hint { color: var(--accent); }
 
   .btn:focus-visible, .code-chip:focus-visible {
     outline: 2px solid var(--accent);

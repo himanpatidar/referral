@@ -54,22 +54,27 @@
     });
   }
 
-  function wireCopy(chip, code, labelEl) {
-    var original = labelEl.textContent;
+  // Feedback goes on the small hint label, never on the code itself — the
+  // code stays put so the chip can't change size or reflow the row.
+  function wireCopy(chip, code, hintEl) {
+    var original = hintEl.textContent;
     var timer;
+
+    function reset() {
+      hintEl.textContent = original;
+      chip.classList.remove('copied');
+    }
+
     chip.addEventListener('click', function () {
       copyText(code).then(function () {
         clearTimeout(timer);
-        labelEl.textContent = 'Copied';
+        hintEl.textContent = 'Copied';
         chip.classList.add('copied');
-        timer = setTimeout(function () {
-          labelEl.textContent = original;
-          chip.classList.remove('copied');
-        }, 1600);
+        timer = setTimeout(reset, 1600);
       }).catch(function () {
         clearTimeout(timer);
-        labelEl.textContent = 'Press ⌘C';
-        timer = setTimeout(function () { labelEl.textContent = original; }, 1600);
+        hintEl.textContent = 'Failed';
+        timer = setTimeout(reset, 1600);
       });
     });
   }
@@ -132,10 +137,10 @@
       var chip = el('button', 'code-chip');
       chip.type = 'button';
       chip.setAttribute('aria-label', 'Copy referral code for ' + app);
-      var codeLabel = el('span', null, code);
-      chip.appendChild(codeLabel);
-      chip.appendChild(el('span', 'hint', 'copy'));
-      wireCopy(chip, code, codeLabel);
+      chip.appendChild(el('span', 'code', code));
+      var hint = el('span', 'hint', 'copy');
+      chip.appendChild(hint);
+      wireCopy(chip, code, hint);
       actions.appendChild(chip);
     }
 
