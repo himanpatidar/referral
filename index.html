@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referral</title>
+<meta name="description" content="Referral — coming soon.">
+<style>
+  :root {
+    --bg: #fbfbfa;
+    --surface: #ffffff;
+    --text: #1a1a18;
+    --muted: #6b6b66;
+    --border: #e6e5e1;
+    --accent: #2f6f4f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413;
+      --surface: #1c1c1a;
+      --text: #f2f1ed;
+      --muted: #9a9a93;
+      --border: #2e2e2b;
+      --accent: #7dc5a0;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413;
+    --surface: #1c1c1a;
+    --text: #f2f1ed;
+    --muted: #9a9a93;
+    --border: #2e2e2b;
+    --accent: #7dc5a0;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+  }
+
+  main {
+    width: 100%;
+    max-width: 30rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 9vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    margin: 1.25rem 0 0;
+  }
+
+  p.lede {
+    color: var(--muted);
+    font-size: 1.0625rem;
+    margin: 0.875rem 0 0;
+    max-width: 26rem;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0 1.25rem;
+  }
+
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    align-items: baseline;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+</style>
+</head>
+<body>
+  <main>
+    <span class="badge"><span class="dot"></span>In development</span>
+
+    <h1>Referral</h1>
+
+    <p class="lede">
+      Something new is being built here. Check back soon.
+    </p>
+
+    <hr>
+
+    <footer>
+      <span>&copy; 2026</span>
+      <a href="https://github.com/himanpatidar/referral">Source on GitHub</a>
+    </footer>
+  </main>
+</body>
+</html>
