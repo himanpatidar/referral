@@ -1,27 +1,105 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-01",
+  "note": "PLACEHOLDER DATA — every url and code below is a dummy. Replace with your real referral values before merging to main.",
   "links": [
     {
       "app": "Swiggy",
       "category": "Food",
       "tagline": "Food delivery",
-      "reward": "",
-      "url": "",
-      "code": "",
-      "note": "",
-      "logo": "",
-      "accent": "#fc8019"
+      "reward": "₹150 off your first order",
+      "url": "https://example.com/referral/swiggy",
+      "code": "SWIGGY-DEMO-1234",
+      "note": "Dummy data — not a real referral yet",
+      "logo": "assets/logos/swiggy.svg",
+      "accent": "#FC8019"
     },
     {
       "app": "Zomato",
       "category": "Food",
       "tagline": "Food delivery & dining out",
+      "reward": "₹125 off your first two orders",
+      "url": "https://example.com/referral/zomato",
+      "code": "ZOMATO-DEMO-5678",
+      "note": "Dummy data — not a real referral yet",
+      "logo": "assets/logos/zomato.svg",
+      "accent": "#E23744"
+    },
+    {
+      "app": "Uber",
+      "category": "Travel",
+      "tagline": "Rides & intercity travel",
+      "reward": "₹100 off your next two rides",
+      "url": "https://example.com/referral/uber",
+      "code": "UBER-DEMO-9012",
+      "note": "Dummy data — not a real referral yet",
+      "logo": "assets/logos/uber.svg",
+      "accent": "#1A1A18"
+    },
+    {
+      "app": "Airbnb",
+      "category": "Travel",
+      "tagline": "Stays & experiences",
+      "reward": "₹2,000 travel credit on your first trip",
+      "url": "https://example.com/referral/airbnb",
+      "code": "",
+      "note": "Dummy data — link-only example, no code",
+      "logo": "assets/logos/airbnb.svg",
+      "accent": "#FF5A5F"
+    },
+    {
+      "app": "Paytm",
+      "category": "Finance",
+      "tagline": "Payments & wallet",
+      "reward": "₹50 cashback on your first transaction",
+      "url": "https://example.com/referral/paytm",
+      "code": "PAYTM-DEMO-3456",
+      "note": "Dummy data — not a real referral yet",
+      "logo": "assets/logos/paytm.svg",
+      "accent": "#20336B"
+    },
+    {
+      "app": "PhonePe",
+      "category": "Finance",
+      "tagline": "UPI payments",
+      "reward": "₹100 cashback after your first payment",
+      "url": "",
+      "code": "PHONEPE-DEMO-7890",
+      "note": "Dummy data — code-only example, no link",
+      "logo": "assets/logos/phonepe.svg",
+      "accent": "#5F259F"
+    },
+    {
+      "app": "Zerodha",
+      "category": "Finance",
+      "tagline": "Stocks & investing",
+      "reward": "300 reward points when you open an account",
+      "url": "https://example.com/referral/zerodha",
+      "code": "ZERODHA-DEMO-2468",
+      "note": "Dummy data — not a real referral yet",
+      "logo": "assets/logos/zerodha.svg",
+      "accent": "#387ED1"
+    },
+    {
+      "app": "Spotify",
+      "category": "Entertainment",
+      "tagline": "Music streaming",
+      "reward": "1 month of Premium free",
+      "url": "https://example.com/referral/spotify",
+      "code": "",
+      "note": "Dummy data — link-only example, no code",
+      "logo": "assets/logos/spotify.svg",
+      "accent": "#1ED760"
+    },
+    {
+      "app": "Netflix",
+      "category": "Entertainment",
+      "tagline": "Films & series",
       "reward": "",
       "url": "",
       "code": "",
-      "note": "",
-      "logo": "",
-      "accent": "#e23744"
+      "note": "Dummy data — shows the empty state for a referral you haven't set up",
+      "logo": "assets/logos/netflix.svg",
+      "accent": "#E50914"
     }
   ]
 }

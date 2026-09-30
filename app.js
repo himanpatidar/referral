@@ -7,6 +7,7 @@
   var searchEl = document.getElementById('search');
   var countEl = document.getElementById('count');
   var updatedEl = document.getElementById('updated');
+  var bannerEl = document.getElementById('banner');
 
   var allLinks = [];
 
@@ -206,6 +207,12 @@
       allLinks = Array.isArray(data && data.links) ? data.links : [];
       if (data && data.updated) {
         updatedEl.textContent = 'Updated ' + data.updated;
+      }
+      if (data && typeof data.note === 'string' && data.note.trim() !== '') {
+        var strong = el('strong', null, 'Heads up:');
+        bannerEl.appendChild(strong);
+        bannerEl.appendChild(el('span', null, ' ' + data.note.trim()));
+        bannerEl.hidden = false;
       }
       render('');
       searchEl.addEventListener('input', function () { render(searchEl.value); });
